@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -187,7 +187,7 @@
   .section-subheading { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 600px; }
 
   /* Cards / Glassmorphism */
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
   .card { 
     background: var(--card-bg); 
     border: 1px solid var(--card-border);
@@ -221,6 +221,7 @@
   }
   .card h3 { margin-top: 0; font-size: 1.5rem; margin-bottom: 0.5rem; }
   .price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0 0.5rem; font-family: var(--font-heading); color: var(--text); }
+  .price-original { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; margin-right: 0.5rem; }
   .delivery { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
   .card p { color: var(--text-muted); font-size: 0.95rem; }
   .card ul { padding-left: 0; list-style: none; margin-bottom: 2rem; flex-grow: 1; }
@@ -233,6 +234,19 @@
     font-weight: bold;
   }
   .card button { width: 100%; margin-top: auto; }
+
+  /* Risk-Reversal Guarantee */
+  .guarantee-section {
+    background: rgba(255, 107, 53, 0.08);
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .guarantee-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .guarantee-title { font-size: 1.3rem; font-weight: 700; font-family: var(--font-heading); margin-bottom: 0.75rem; color: var(--accent); }
+  .guarantee-text { color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 700px; margin-left: auto; margin-right: auto; }
 
   /* Work Grid */
   .portfolio-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
@@ -375,58 +389,67 @@
       <p class="section-subheading reveal reveal-delay-2">Choose the solution that fits your current monetization stage. Everything is built from scratch to match your unique brand identity.</p>
       
       <div class="cards">
-        <!-- Card 1 -->
+        <!-- Card 1: Tier 1 - The Creator Hub -->
         <div class="card reveal">
-          <div class="badge">Most popular</div>
-          <h3>Landing Page</h3>
-          <div class="price">$120</div>
-          <div class="delivery">Ready in 3 days</div>
+          <div class="badge">Launch Fast</div>
+          <h3>Tier 1: The Creator Hub</h3>
+          <div class="price">$499</div>
+          <div class="delivery">Ready in 3–4 days</div>
           <p>A custom landing page built for your brand — not a template. Optimized for conversions and speed.</p>
           <ul>
-            <li>Custom unique design</li>
-            <li>Email capture integration</li>
-            <li>Mobile responsive</li>
-            <li>SEO meta tags + sitemap</li>
-            <li>Google Search Console setup</li>
-            <li>30 days of support</li>
+            <li>Bespoke, high-converting design tailored to your personal brand</li>
+            <li>Optimized 1-click email capture system to build your list</li>
+            <li>Flawless mobile & tablet responsiveness for social media traffic</li>
+            <li>Complete Google Search Console verification & indexing</li>
+            <li>Technical SEO architecture with automated XML sitemaps</li>
+            <li>30 days of seamless text, asset, and layout adjustments</li>
           </ul>
           <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
         </div>
         
-        <!-- Card 2 -->
+        <!-- Card 2: Tier 2 - The Asset Factory -->
         <div class="card reveal reveal-delay-1">
-          <h3>Digital Products</h3>
-          <div class="price">From $75</div>
-          <div class="delivery">Ready in 1–12 days</div>
-          <p>Professional PDFs, Notion templates, and Canva packs designed to be sold immediately to your audience.</p>
+          <div class="badge">Products Only</div>
+          <h3>Tier 2: The Asset Factory</h3>
+          <div class="price">$799 Pack of 5</div>
+          <div class="delivery">Ready in 7–10 days</div>
+          <p>Professional digital assets engineered for your specific niche and ready to sell immediately.</p>
           <ul>
-            <li>PDF guides (15–20 pages)</li>
-            <li>Spreadsheets & Trackers</li>
-            <li>Canva template packs</li>
-            <li>Notion workspace templates</li>
-            <li>Brand-consistent design</li>
-            <li>45 days of support</li>
+            <li>5 premium digital assets engineered for your specific niche</li>
+            <li>Interactive Notion dashboards and fillable goal-tracking frameworks</li>
+            <li>Custom-branded, fully editable Canva social template kits</li>
+            <li>High-converting product descriptions optimized to sell</li>
+            <li>Eye-catching 3D thumbnail cover designs and preview assets</li>
+            <li>45 days of technical asset formatting & delivery support</li>
           </ul>
           <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
         </div>
         
-        <!-- Card 3 -->
+        <!-- Card 3: Tier 3 - The Automated Empire -->
         <div class="card reveal reveal-delay-2" style="border-color: rgba(255, 107, 53, 0.4); background: rgba(255, 107, 53, 0.03);">
-          <div class="badge" style="background: #fff; color: var(--bg);">Best value</div>
-          <h3>Full System</h3>
-          <div class="price text-gradient" style="display: inline-block; -webkit-text-fill-color: transparent;">$550</div>
-          <div class="delivery">Ready in 7 days</div>
-          <p>The complete package. A custom landing page plus a suite of 4-5 digital products ready to generate revenue.</p>
+          <div class="badge" style="background: #fff; color: var(--bg);">Most Popular • Best Value</div>
+          <h3>Tier 3: The Automated Empire</h3>
+          <div class="price"><span class="price-original">$1,298</span>$999</div>
+          <div class="delivery">Ready in 12–14 days</div>
+          <p>The complete package. Everything you need to launch a professional, revenue-generating digital business.</p>
           <ul>
-            <li>Everything in Landing Page</li>
-            <li>4–5 digital products built</li>
-            <li>Gumroad store setup & integration</li>
-            <li>Copywriting for products</li>
-            <li>30‑minute strategy call</li>
-            <li>90 days of VIP support</li>
+            <li>★ EVERYTHING INCLUDED in the Creator Hub and Asset Factory</li>
+            <li>5 complete, ready-to-sell digital products built end-to-end</li>
+            <li>Turn-key Gumroad storefront setup and technical checkout integration</li>
+            <li>Live, beautiful product showcase sections embedded onto your website</li>
+            <li>Professional sales copywriting for your entire storefront</li>
+            <li>Private 30-minute launch strategy and monetization coaching call</li>
+            <li>90 days of dedicated priority VIP troubleshooting support</li>
           </ul>
-          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get the bundle</button>
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Launch Your System</button>
         </div>
+      </div>
+
+      <!-- Risk-Reversal Guarantee -->
+      <div class="guarantee-section reveal">
+        <div class="guarantee-icon">🔒</div>
+        <div class="guarantee-title">Risk-Free Framework Guarantee</div>
+        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, you receive an immediate, 100% refund—no questions asked.</p>
       </div>
     </div>
   </section>
@@ -446,7 +469,7 @@
           <a href="https://neevcoaching.netlify.app/" target="_blank">View live site <span>→</span></a>
         </div>
         
-        <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255,107,53,0.3); background: rgba(255,107,53,0.02);">
+        <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255, 107, 53, 0.3);">
           <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
           <h4 style="color: var(--accent);">Your Project Here</h4>
           <p style="color: var(--text-muted);">More projects coming soon. Be one of the first 2 clients this month and get featured here.</p>
@@ -489,7 +512,7 @@
       <div class="section-label reveal">About Quill</div>
       <h2 class="section-heading reveal reveal-delay-1">Building digital assets for ambitious creators.</h2>
       <div class="reveal reveal-delay-2">
-        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;">I help creators with 10k-50k subscribers monetize their audience by building premium digital products and the high-converting landing pages needed to sell them. No generic templates—just tailored solutions that reflect your brand.</p>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;">I help creators with 10k-50k subscribers monetize their audience by building premium digital products and the high-converting landing pages to sell them.</p>
       </div>
       
       <h3 class="reveal" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Common Questions</h3>
@@ -515,11 +538,11 @@
 
   <!-- Slack Modal -->
   <div id="slack-modal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center;">
-    <div style="background:#13141c; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:3rem 2.5rem; max-width:520px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+    <div style="background:#13141c; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:3rem 2.5rem; max-width:520px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
       <button onclick="closeSlack()" style="position:absolute; top:1rem; right:1.2rem; background:none; border:none; color:#a0a5b1; font-size:1.5rem; cursor:pointer;">✕</button>
       <div style="font-size:3rem; margin-bottom:1rem;">💬</div>
       <h3 style="font-family:'Outfit',sans-serif; font-size:1.6rem; margin:0 0 0.5rem;">Join the Workspace</h3>
-      <p style="color:#a0a5b1; margin-bottom:2rem; font-size:0.95rem;">Click below to join my Slack workspace. You'll get your own dedicated channel where we can talk through your project in real time — all in one place.</p>
+      <p style="color:#a0a5b1; margin-bottom:2rem; font-size:0.95rem;">Click below to join my Slack workspace. You'll get your own dedicated channel where we can talk through your project in real time.</p>
 
       <div style="background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.25); border-radius:12px; padding:1.5rem; margin-bottom:2rem;">
         <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:0.75rem; font-weight:600;">How it works</div>
@@ -530,7 +553,7 @@
         </div>
       </div>
 
-      <a id="slack-invite-link" href="https://join.slack.com/t/buildwithquill/shared_invite/zt-416i4fwba-9Np69i~jV~~sm3DZ6kXIPA" target="_blank" class="btn btn-primary" style="width:100%; display:block; font-size:1.1rem; padding:1rem;">
+      <a id="slack-invite-link" href="https://join.slack.com/t/buildwithquill/shared_invite/zt-416i4fwba-9Np69i~jV~~sm3DZ6kXIPA" target="_blank" class="btn btn-primary" style="width:100%; display:block; text-align:center;">
         Join Slack Workspace →
       </a>
       <p style="color:#a0a5b1; font-size:0.8rem; margin-top:1rem;">Free to join · No account needed · Instant access</p>
@@ -538,19 +561,21 @@
   </div>
 
   <!-- Copy Toast -->
-  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:30px; font-size:0.9rem; z-index:9999; box-shadow:0 4px 20px rgba(0,0,0,0.4);">✅ Email copied to clipboard!</div>
+  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-size:0.9rem; z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+    ✓ Email copied to clipboard
+  </div>
 
   <!-- Contact -->
   <section class="section" id="contact">
     <div class="container" style="text-align: center; max-width: 680px;">
       <div class="section-label reveal">Get in touch</div>
       <h2 class="section-heading reveal reveal-delay-1">Ready to scale your creator business?</h2>
-      <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>2 new clients</strong> this month. Choose how you'd like to reach out — I'll respond within 24 hours.</p>
+      <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>2 new clients</strong> this month. Choose how you'd like to reach out.</p>
 
       <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:stretch;">
 
         <!-- Slack CTA -->
-        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,107,53,0.3); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center; gap:1rem;">
+        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,107,53,0.3); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
           <div style="font-size:2.5rem;">💬</div>
           <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Chat on Slack</div>
           <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Fastest way to connect. Join my workspace and get your own private channel.</p>
@@ -561,7 +586,7 @@
         <div style="display:flex; align-items:center; color:var(--text-muted); font-size:0.85rem; padding:0 0.5rem;">or</div>
 
         <!-- Email CTA -->
-        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center; gap:1rem;">
+        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
           <div style="font-size:2.5rem;">✉️</div>
           <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Send an Email</div>
           <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Prefer email? Click below to copy our address and reach out at your own pace.</p>
