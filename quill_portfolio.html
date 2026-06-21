@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quill Portfolio</title>
+<meta name="description" content="Custom websites and digital products for Finance, Fitness, and Self-Improvement creators.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0b10;
+    --bg-secondary: #13141c;
+    --accent: #ff6b35;
+    --accent-hover: #ff8b5c;
+    --accent-glow: rgba(255, 107, 53, 0.5);
+    --text: #fdfdfd;
+    --text-muted: #a0a5b1;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(10, 11, 16, 0.7);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, .logo, .eyebrow {
+    font-family: var(--font-heading);
+  }
+
+  a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+  a:hover { color: var(--accent-hover); }
+
+  /* Utility classes */
+  .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+  .text-gradient {
+    background: linear-gradient(135deg, #ff6b35 0%, #f9c22e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animations */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* Navigation */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    transition: padding 0.3s ease;
+  }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; transition: padding 0.3s ease; }
+  header.scrolled .nav { padding: 0.8rem 0; }
+  .nav .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { color: var(--text-muted); font-weight: 500; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* Buttons */
+  .btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-block;
+    border: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #ff6b35 0%, #e85a26 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px var(--accent-glow);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(5px);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .cta-btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .cta-btn:hover { background: var(--accent-hover); box-shadow: 0 0 15px var(--accent-glow); }
+
+  /* Hero Section */
+  .hero { 
+    padding: 10rem 0 6rem; 
+    text-align: center; 
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, rgba(0,0,0,0) 70%);
+    z-index: -1;
+  }
+  .hero .eyebrow { 
+    display: inline-block;
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 1rem; 
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 107, 53, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+  }
+  .hero h1 { font-size: 4rem; font-weight: 800; margin: 0.5rem 0 1.5rem; line-height: 1.1; letter-spacing: -1px; }
+  .hero h2 { font-size: 1.4rem; font-weight: 400; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .hero .buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .trust-line { margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 1rem; }
+  .trust-line span { display: flex; align-items: center; gap: 0.5rem; }
+  .trust-line svg { width: 16px; height: 16px; fill: var(--accent); }
+
+  /* Social Proof Bar */
+  .social-proof { 
+    background: var(--bg-secondary); 
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.5rem 0; 
+    font-size: 0.9rem; 
+    text-align: center; 
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* General Sections */
+  .section { padding: 6rem 0; position: relative; }
+  .section-label { 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+    color: var(--accent); 
+    margin-bottom: 0.5rem; 
+    font-weight: 600; 
+    letter-spacing: 1.5px; 
+    font-family: var(--font-heading);
+  }
+  .section-heading { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0 1rem; }
+  .section-subheading { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 600px; }
+
+  /* Cards / Glassmorphism */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+  .card { 
+    background: var(--card-bg); 
+    border: 1px solid var(--card-border);
+    border-radius: 16px; 
+    padding: 2.5rem 2rem; 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition);
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 107, 53, 0.1) inset;
+  }
+  .badge { 
+    position: absolute; 
+    top: -12px; left: 50%; 
+    transform: translateX(-50%); 
+    background: linear-gradient(135deg, #ff6b35 0%, #e85a26 100%); 
+    color: #fff; 
+    padding: 0.4rem 1rem; 
+    border-radius: 20px; 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px var(--accent-glow);
+  }
+  .card h3 { margin-top: 0; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0 0.5rem; font-family: var(--font-heading); color: var(--text); }
+  .price-original { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; margin-right: 0.5rem; }
+  .delivery { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .card p { color: var(--text-muted); font-size: 0.95rem; }
+  .card ul { padding-left: 0; list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+  .card ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; font-size: 0.95rem; color: #d1d5db; }
+  .card ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .card button { width: 100%; margin-top: auto; }
+
+  /* Risk-Reversal Guarantee */
+  .guarantee-section {
+    background: rgba(255, 107, 53, 0.08);
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .guarantee-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .guarantee-title { font-size: 1.3rem; font-weight: 700; font-family: var(--font-heading); margin-bottom: 0.75rem; color: var(--accent); }
+  .guarantee-text { color: var(--text-muted); font-size: 0.95rem; margin: 0; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+  /* Work Grid */
+  .portfolio-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .work-item { 
+    background: var(--card-bg); 
+    border: 1px solid var(--card-border);
+    padding: 2rem; 
+    border-radius: 16px; 
+    transition: var(--transition);
+  }
+  .work-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+  .work-item h4 { margin: 0.5rem 0 1rem; font-size: 1.4rem; }
+  .work-item p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .work-item a { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.95rem; }
+  .work-item a:hover { gap: 5px; }
+
+  /* How It Works */
+  .how-it-works { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+  .how-step { 
+    background: var(--bg-secondary); 
+    padding: 2rem; 
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    position: relative;
+    z-index: 1;
+  }
+  .step-number {
+    position: absolute;
+    top: -20px; right: 20px;
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.03);
+    z-index: -1;
+    font-family: var(--font-heading);
+  }
+  .how-step h4 { margin: 0 0 1rem; font-size: 1.2rem; color: var(--accent); }
+  .how-step p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+  /* Details / FAQ */
+  details {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  summary {
+    padding: 1.2rem 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { padding: 0 1.5rem 1.2rem; margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+  /* Footer */
+  .footer { 
+    background: var(--bg-secondary); 
+    padding: 4rem 0 2rem; 
+    font-size: 0.9rem; 
+    border-top: 1px solid var(--card-border);
+  }
+  .footer .flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; }
+  .footer-logo { font-size: 1.2rem; font-weight: 700; font-family: var(--font-heading); margin-bottom: 0.5rem; color: #fff; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer a { color: var(--text-muted); }
+  .footer a:hover { color: var(--accent); }
+  .small-bottom { text-align: center; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; /* simple mobile nav approach for now */ }
+    .hero h1 { font-size: 2.5rem; }
+    .hero h2 { font-size: 1.1rem; }
+    .section { padding: 4rem 0; }
+    .section-heading { font-size: 2rem; }
+    .footer .flex { flex-direction: column; text-align: center; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header id="header">
+    <div class="container nav">
+      <div class="logo">BUILD WITH QUILL</div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">Process</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Contact Us</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero reveal" id="hero">
+    <div class="container">
+      <div class="eyebrow">Websites & Digital Products</div>
+      <h1>Turn Your Knowledge<br><span class="text-gradient">Into Revenue</span></h1>
+      <h2>I build premium, custom landing pages and digital products for creators in Finance, Fitness, and Self‑Improvement. No templates. High conversions.</h2>
+      <div class="buttons">
+        <button class="btn btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});">View Portfolio</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Start a Project</button>
+      </div>
+      <div class="trust-line">
+        <span><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg> Custom builds</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg> 3-day turnaround</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg> 90-day support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Bar -->
+  <section class="social-proof reveal">
+    <div class="container">
+      TRUSTED BY CREATORS IN FITNESS · FINANCE · SELF-IMPROVEMENT
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label reveal">What I offer</div>
+      <h2 class="section-heading reveal reveal-delay-1">Tailored for your audience.</h2>
+      <p class="section-subheading reveal reveal-delay-2">Choose the solution that fits your current monetization stage. Everything is built from scratch to match your unique brand identity.</p>
+      
+      <div class="cards">
+        <!-- Card 1: Tier 1 - The Creator Hub -->
+        <div class="card reveal">
+          <div class="badge">Launch Fast</div>
+          <h3>Tier 1: The Creator Hub</h3>
+          <div class="price">$499</div>
+          <div class="delivery">Ready in 3–4 days</div>
+          <p>A custom landing page built for your brand — not a template. Optimized for conversions and speed.</p>
+          <ul>
+            <li>Bespoke, high-converting design tailored to your personal brand</li>
+            <li>Optimized 1-click email capture system to build your list</li>
+            <li>Flawless mobile & tablet responsiveness for social media traffic</li>
+            <li>Complete Google Search Console verification & indexing</li>
+            <li>Technical SEO architecture with automated XML sitemaps</li>
+            <li>30 days of seamless text, asset, and layout adjustments</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
+        </div>
+        
+        <!-- Card 2: Tier 2 - The Asset Factory -->
+        <div class="card reveal reveal-delay-1">
+          <div class="badge">Products Only</div>
+          <h3>Tier 2: The Asset Factory</h3>
+          <div class="price">$799 Pack of 5</div>
+          <div class="delivery">Ready in 7–10 days</div>
+          <p>Professional digital assets engineered for your specific niche and ready to sell immediately.</p>
+          <ul>
+            <li>5 premium digital assets engineered for your specific niche</li>
+            <li>Interactive Notion dashboards and fillable goal-tracking frameworks</li>
+            <li>Custom-branded, fully editable Canva social template kits</li>
+            <li>High-converting product descriptions optimized to sell</li>
+            <li>Eye-catching 3D thumbnail cover designs and preview assets</li>
+            <li>45 days of technical asset formatting & delivery support</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
+        </div>
+        
+        <!-- Card 3: Tier 3 - The Automated Empire -->
+        <div class="card reveal reveal-delay-2" style="border-color: rgba(255, 107, 53, 0.4); background: rgba(255, 107, 53, 0.03);">
+          <div class="badge" style="background: #fff; color: var(--bg);">Most Popular • Best Value</div>
+          <h3>Tier 3: The Automated Empire</h3>
+          <div class="price"><span class="price-original">$1,298</span>$999</div>
+          <div class="delivery">Ready in 12–14 days</div>
+          <p>The complete package. Everything you need to launch a professional, revenue-generating digital business.</p>
+          <ul>
+            <li>★ EVERYTHING INCLUDED in the Creator Hub and Asset Factory</li>
+            <li>5 complete, ready-to-sell digital products built end-to-end</li>
+            <li>Turn-key Gumroad storefront setup and technical checkout integration</li>
+            <li>Live, beautiful product showcase sections embedded onto your website</li>
+            <li>Professional sales copywriting for your entire storefront</li>
+            <li>Private 30-minute launch strategy and monetization coaching call</li>
+            <li>90 days of dedicated priority VIP troubleshooting support</li>
+          </ul>
+          <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Launch Your System</button>
+        </div>
+      </div>
+
+      <!-- Risk-Reversal Guarantee -->
+      <div class="guarantee-section reveal">
+        <div class="guarantee-icon">🔒</div>
+        <div class="guarantee-title">Risk-Free Framework Guarantee</div>
+        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, you receive an immediate, 100% refund—no questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio / Work -->
+  <section class="section" id="work" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-label reveal">My work</div>
+      <h2 class="section-heading reveal reveal-delay-1">Built from scratch. Every time.</h2>
+      <p class="section-subheading reveal reveal-delay-2">A selection of recent projects. Your project will be uniquely designed for your brand aesthetics.</p>
+      
+      <div class="portfolio-grid">
+        <div class="work-item reveal">
+          <div class="section-label" style="font-size: 0.75rem; color: var(--text-muted);">Coaching · Landing Page</div>
+          <h4>Neev Coaching</h4>
+          <p>High-converting landing page for a self-improvement coach featuring email capture and bespoke animations.</p>
+          <a href="https://neevcoaching.netlify.app/" target="_blank">View live site <span>→</span></a>
+        </div>
+        
+        <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255, 107, 53, 0.3);">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+          <h4 style="color: var(--accent);">Your Project Here</h4>
+          <p style="color: var(--text-muted);">More projects coming soon. Be one of the first 2 clients this month and get featured here.</p>
+          <button class="btn btn-secondary" style="margin-top: auto;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Work with me</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-label reveal">The Process</div>
+      <h2 class="section-heading reveal reveal-delay-1">Simple. Fast. Done.</h2>
+      <p class="section-subheading reveal reveal-delay-2">A streamlined workflow designed to get your products launched as quickly as possible without sacrificing quality.</p>
+      
+      <div class="how-it-works">
+        <div class="how-step reveal">
+          <div class="step-number">01</div>
+          <h4>Strategy & Alignment</h4>
+          <p>We discuss your audience, niche, and monetization goals. We agree on exactly what will be built to ensure maximum impact.</p>
+        </div>
+        <div class="how-step reveal reveal-delay-1">
+          <div class="step-number">02</div>
+          <h4>Design & Development</h4>
+          <p>I build your landing page and digital products from scratch. You receive regular updates and can request revisions.</p>
+        </div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="step-number">03</div>
+          <h4>Launch & Support</h4>
+          <p>You get the keys to your new digital empire. Products are ready to sell, and your ongoing support period begins instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & FAQ -->
+  <section class="section" id="about" style="background: var(--bg-secondary);">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-label reveal">About Quill</div>
+      <h2 class="section-heading reveal reveal-delay-1">Building digital assets for ambitious creators.</h2>
+      <div class="reveal reveal-delay-2">
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;">I help creators with 10k-50k subscribers monetize their audience by building premium digital products and the high-converting landing pages to sell them.</p>
+      </div>
+      
+      <h3 class="reveal" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Common Questions</h3>
+      
+      <details class="reveal">
+        <summary>Do I need to have a product idea already?</summary>
+        <p>Not at all. Part of my process is analyzing your content and audience to identify high-demand product opportunities. You bring the audience; I'll help figure out what they want to buy.</p>
+      </details>
+      <details class="reveal">
+        <summary>What if I need revisions?</summary>
+        <p>I offer unlimited reasonable revisions within the scope of our agreement during the build and the included support period. My goal is your complete satisfaction.</p>
+      </details>
+      <details class="reveal">
+        <summary>How are payments handled?</summary>
+        <p>Full payment is taken upfront via secure processor before work begins. For larger custom bundles over $500, a 50% deposit / 50% on completion structure is available.</p>
+      </details>
+      <details class="reveal">
+        <summary>Who owns the final products?</summary>
+        <p>You do. 100%. Once delivered and paid in full, all code, designs, and digital products belong entirely to you with full commercial rights.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Slack Modal -->
+  <div id="slack-modal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center;">
+    <div style="background:#13141c; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:3rem 2.5rem; max-width:520px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <button onclick="closeSlack()" style="position:absolute; top:1rem; right:1.2rem; background:none; border:none; color:#a0a5b1; font-size:1.5rem; cursor:pointer;">✕</button>
+      <div style="font-size:3rem; margin-bottom:1rem;">💬</div>
+      <h3 style="font-family:'Outfit',sans-serif; font-size:1.6rem; margin:0 0 0.5rem;">Join the Workspace</h3>
+      <p style="color:#a0a5b1; margin-bottom:2rem; font-size:0.95rem;">Click below to join my Slack workspace. You'll get your own dedicated channel where we can talk through your project in real time.</p>
+
+      <div style="background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.25); border-radius:12px; padding:1.5rem; margin-bottom:2rem;">
+        <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:0.75rem; font-weight:600;">How it works</div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; text-align:left; font-size:0.9rem; color:#d1d5db;">
+          <span>① Click the button below &amp; join the workspace</span>
+          <span>② You land in your own dedicated channel</span>
+          <span>③ I'm already there — let's talk!</span>
+        </div>
+      </div>
+
+      <a id="slack-invite-link" href="https://join.slack.com/t/buildwithquill/shared_invite/zt-416i4fwba-9Np69i~jV~~sm3DZ6kXIPA" target="_blank" class="btn btn-primary" style="width:100%; display:block; text-align:center;">
+        Join Slack Workspace →
+      </a>
+      <p style="color:#a0a5b1; font-size:0.8rem; margin-top:1rem;">Free to join · No account needed · Instant access</p>
+    </div>
+  </div>
+
+  <!-- Copy Toast -->
+  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-size:0.9rem; z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+    ✓ Email copied to clipboard
+  </div>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container" style="text-align: center; max-width: 680px;">
+      <div class="section-label reveal">Get in touch</div>
+      <h2 class="section-heading reveal reveal-delay-1">Ready to scale your creator business?</h2>
+      <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>2 new clients</strong> this month. Choose how you'd like to reach out.</p>
+
+      <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:stretch;">
+
+        <!-- Slack CTA -->
+        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,107,53,0.3); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
+          <div style="font-size:2.5rem;">💬</div>
+          <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Chat on Slack</div>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Fastest way to connect. Join my workspace and get your own private channel.</p>
+          <button onclick="openSlack()" class="btn btn-primary" style="width:100%; margin-top:auto;">Contact Us →</button>
+        </div>
+
+        <!-- Divider -->
+        <div style="display:flex; align-items:center; color:var(--text-muted); font-size:0.85rem; padding:0 0.5rem;">or</div>
+
+        <!-- Email CTA -->
+        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
+          <div style="font-size:2.5rem;">✉️</div>
+          <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Send an Email</div>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Prefer email? Click below to copy our address and reach out at your own pace.</p>
+          <button onclick="copyEmail()" class="btn btn-secondary" style="width:100%; margin-top:auto;">📋 Copy Email Address</button>
+          <span style="font-size:0.85rem; color:var(--text-muted);">buildbyquill@gmail.com</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="flex">
+        <div>
+          <div class="footer-logo">QUILL.</div>
+          <p style="color: var(--text-muted); margin: 0; max-width: 300px;">Premium digital products and landing pages for creators who want to monetize properly.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#work">Portfolio</a>
+          <a href="#how-it-works">Process</a>
+          <a href="#about">FAQ</a>
+        </div>
+        <div>
+          <a href="mailto:buildbyquill@gmail.com" style="color: var(--text); font-weight: 500;">buildbyquill@gmail.com</a>
+        </div>
+      </div>
+      <div class="small-bottom">© 2026 Quill Portfolio. All rights reserved. Designed for excellence.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for Reveal Animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target); // Stop observing once revealed
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Initial trigger for elements already in viewport on load
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          element.classList.add('active');
+        }
+      });
+    }, 100);
+
+    // Slack Modal
+    function openSlack() {
+      const modal = document.getElementById('slack-modal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSlack() {
+      const modal = document.getElementById('slack-modal');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.getElementById('slack-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeSlack();
+    });
+
+    // Copy Email to Clipboard
+    function copyEmail() {
+      navigator.clipboard.writeText('buildbyquill@gmail.com').then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+      });
+    }  </script>
+</body>
+</html>
