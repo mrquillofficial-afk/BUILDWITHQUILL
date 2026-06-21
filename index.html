@@ -419,7 +419,7 @@
     <div class="container">
       <div class="eyebrow">Websites & Digital Products</div>
       <h1>Turn Your Knowledge<br><span class="text-gradient">Into Revenue</span></h1>
-      <h2>I build premium, custom landing pages and digital products for creators in Finance, Fitness, and Self‑Improvement. Every page is built around your audience, your niche, and your offer — not a generic layout.</h2>
+      <h2>I build premium, custom landing pages and digital products for creators in Finance, Fitness, and Self‑Improvement. Every page is built around your audience, your niche, and your offer.
       <div class="buttons">
         <button class="btn btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});">View Portfolio</button>
         <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Start a Project</button>
@@ -511,7 +511,7 @@
       <div class="guarantee-section reveal">
         <div class="guarantee-icon">🔒</div>
         <div class="guarantee-title">Risk-Free Framework Guarantee</div>
-        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, we'll provide a full refund—no questions asked.</p>
+        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, we return 100% of your investment.</p>
       </div>
     </div>
   </section>
@@ -531,7 +531,7 @@
           <a href="https://neevcoaching.netlify.app/" target="_blank">View live site <span>→</span></a>
         </div>
         
-        <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255, 107, 53, 0.3);">
+        <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255, 107, 53, 0.2);">
           <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
           <h4 style="color: var(--accent);">Spot reserved — spec project dropping this week</h4>
           <p style="color: var(--text-muted);">Be one of the first 3 founding clients and get featured here.</p>
@@ -599,7 +599,7 @@
   </section>
 
   <!-- Copy Toast -->
-  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-size:0.9rem; z-index:1000;">
+  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-weight:600; z-index:1000;">
     ✓ Email copied to clipboard
   </div>
 
@@ -611,7 +611,7 @@
       <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>3 founding clients</strong> this month. Apply using the form below.</p>
 
       <div class="reveal form-container">
-        <form id="application-form" onsubmit="handleFormSubmit(event)">
+        <form id="application-form" name="application" method="POST" netlify>
           <div class="form-group">
             <label for="name">Your Name *</label>
             <input type="text" id="name" name="name" required>
@@ -643,7 +643,7 @@
 
       <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:stretch; margin-top: 2rem;">
         <!-- Email CTA -->
-        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
+        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
           <div style="font-size:2.5rem;">✉️</div>
           <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Send an Email</div>
           <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Prefer email? Reach out directly at your own pace.</p>
@@ -707,6 +707,7 @@
       observer.observe(element);
     });
     
+    // Initial trigger for elements already in viewport on load
     setTimeout(() => {
       document.querySelectorAll('.reveal').forEach(element => {
         const rect = element.getBoundingClientRect();
@@ -715,26 +716,6 @@
         }
       });
     }, 100);
-
-    // Handle Form Submission
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      
-      const formData = new FormData(document.getElementById('application-form'));
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        niche: formData.get('niche'),
-        followers: formData.get('followers'),
-        message: formData.get('message')
-      };
-
-      console.log('Form submitted:', data);
-      
-      alert('Thank you for your application! I\'ll review it and get back to you shortly at ' + data.email);
-      
-      document.getElementById('application-form').reset();
-    }
 
     // Copy Email to Clipboard
     function copyEmail() {
