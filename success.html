@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Received | Quill</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #0a0b10;
+    --accent: #ff6b35;
+    --text: #fdfdfd;
+    --muted: #a0a5b1;
+    --panel: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.1);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+    padding: 2rem;
+  }
+
+  main {
+    width: min(100%, 520px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1;
+  }
+
+  p {
+    margin: 0 0 1.5rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  a {
+    display: inline-block;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Application received</h1>
+    <p>Thanks for reaching out. Your details were sent successfully and can be reviewed in Netlify Forms.</p>
+    <a href="/">Back to site</a>
+  </main>
+</body>
+</html>

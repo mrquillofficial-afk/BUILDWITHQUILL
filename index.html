@@ -611,7 +611,11 @@
       <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>3 founding clients</strong> this month. Apply using the form below.</p>
 
       <div class="reveal form-container">
-        <form id="application-form" name="application" method="POST" netlify>
+        <form id="application-form" name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+          <input type="hidden" name="form-name" value="application">
+          <p style="display:none;">
+            <label>Do not fill this out: <input name="bot-field"></label>
+          </p>
           <div class="form-group">
             <label for="name">Your Name *</label>
             <input type="text" id="name" name="name" required>
