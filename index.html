@@ -389,7 +389,7 @@
   .small-bottom { text-align: center; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; }
 
   @media (max-width: 768px) {
-    .nav-links { display: none; /* simple mobile nav approach for now */ }
+    .nav-links { display: none; }
     .hero h1 { font-size: 2.5rem; }
     .hero h2 { font-size: 1.1rem; }
     .section { padding: 4rem 0; }
@@ -451,7 +451,7 @@
       </div>
 
       <div class="cards">
-        <!-- Card 1: Tier 1 - Landing Page Only -->
+        <!-- Card 1: Landing Page Only -->
         <div class="card reveal">
           <div class="badge">Launch Fast</div>
           <h3>Landing Page</h3>
@@ -698,7 +698,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target); // Stop observing once revealed
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -707,7 +707,6 @@
       observer.observe(element);
     });
     
-    // Initial trigger for elements already in viewport on load
     setTimeout(() => {
       document.querySelectorAll('.reveal').forEach(element => {
         const rect = element.getBoundingClientRect();
@@ -730,13 +729,10 @@
         message: formData.get('message')
       };
 
-      // For now, log the data and show a success message
       console.log('Form submitted:', data);
       
-      // Show success message
       alert('Thank you for your application! I\'ll review it and get back to you shortly at ' + data.email);
       
-      // Reset form
       document.getElementById('application-form').reset();
     }
 
