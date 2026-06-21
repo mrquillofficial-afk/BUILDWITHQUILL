@@ -235,6 +235,24 @@
   }
   .card button { width: 100%; margin-top: auto; }
 
+  /* Founding Client Pricing Notice */
+  .pricing-notice {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 107, 53, 0.05);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 12px;
+  }
+  .pricing-notice p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .pricing-notice strong {
+    color: var(--accent);
+  }
+
   /* Risk-Reversal Guarantee */
   .guarantee-section {
     background: rgba(255, 107, 53, 0.08);
@@ -316,6 +334,46 @@
   details[open] summary::after { transform: rotate(45deg); }
   details p { padding: 0 1.5rem 1.2rem; margin: 0; color: var(--text-muted); font-size: 0.95rem; }
 
+  /* Google Form Styles */
+  .form-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--text);
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text);
+    font-family: var(--font-body);
+    transition: var(--transition);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
   /* Footer */
   .footer { 
     background: var(--bg-secondary); 
@@ -361,7 +419,7 @@
     <div class="container">
       <div class="eyebrow">Websites & Digital Products</div>
       <h1>Turn Your Knowledge<br><span class="text-gradient">Into Revenue</span></h1>
-      <h2>I build premium, custom landing pages and digital products for creators in Finance, Fitness, and Self‑Improvement. No templates. High conversions.</h2>
+      <h2>I build premium, custom landing pages and digital products for creators in Finance, Fitness, and Self‑Improvement. Every page is built around your audience, your niche, and your offer — not a generic layout.</h2>
       <div class="buttons">
         <button class="btn btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'});">View Portfolio</button>
         <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Start a Project</button>
@@ -377,7 +435,7 @@
   <!-- Social Proof Bar -->
   <section class="social-proof reveal">
     <div class="container">
-      TRUSTED BY CREATORS IN FITNESS · FINANCE · SELF-IMPROVEMENT
+      Specializing in Finance, Fitness, and Self-Improvement creators with 10k–100k followers.
     </div>
   </section>
 
@@ -388,12 +446,16 @@
       <h2 class="section-heading reveal reveal-delay-1">Tailored for your audience.</h2>
       <p class="section-subheading reveal reveal-delay-2">Choose the solution that fits your current monetization stage. Everything is built from scratch to match your unique brand identity.</p>
       
+      <div class="pricing-notice reveal reveal-delay-3">
+        <p><strong>Founding Client Pricing</strong> — Onboarding first 3 clients at a reduced rate in exchange for a testimonial and the right to feature your project.</p>
+      </div>
+
       <div class="cards">
-        <!-- Card 1: Tier 1 - The Creator Hub -->
+        <!-- Card 1: Tier 1 - Landing Page Only -->
         <div class="card reveal">
           <div class="badge">Launch Fast</div>
-          <h3>Tier 1: The Creator Hub</h3>
-          <div class="price">$499</div>
+          <h3>Landing Page</h3>
+          <div class="price">$249</div>
           <div class="delivery">Ready in 3–4 days</div>
           <p>A custom landing page built for your brand — not a template. Optimized for conversions and speed.</p>
           <ul>
@@ -407,15 +469,15 @@
           <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
         </div>
         
-        <!-- Card 2: Tier 2 - The Asset Factory -->
+        <!-- Card 2: Digital Product Only -->
         <div class="card reveal reveal-delay-1">
           <div class="badge">Products Only</div>
-          <h3>Tier 2: The Asset Factory</h3>
-          <div class="price">$799 Pack of 5</div>
+          <h3>Digital Product</h3>
+          <div class="price">$199</div>
           <div class="delivery">Ready in 7–10 days</div>
           <p>Professional digital assets engineered for your specific niche and ready to sell immediately.</p>
           <ul>
-            <li>5 premium digital assets engineered for your specific niche</li>
+            <li>Premium digital asset engineered for your specific niche</li>
             <li>Interactive Notion dashboards and fillable goal-tracking frameworks</li>
             <li>Custom-branded, fully editable Canva social template kits</li>
             <li>High-converting product descriptions optimized to sell</li>
@@ -425,16 +487,16 @@
           <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Get started</button>
         </div>
         
-        <!-- Card 3: Tier 3 - The Automated Empire -->
+        <!-- Card 3: Full Package -->
         <div class="card reveal reveal-delay-2" style="border-color: rgba(255, 107, 53, 0.4); background: rgba(255, 107, 53, 0.03);">
           <div class="badge" style="background: #fff; color: var(--bg);">Most Popular • Best Value</div>
-          <h3>Tier 3: The Automated Empire</h3>
-          <div class="price"><span class="price-original">$1,298</span>$999</div>
+          <h3>Full Package</h3>
+          <div class="price">$349</div>
           <div class="delivery">Ready in 12–14 days</div>
           <p>The complete package. Everything you need to launch a professional, revenue-generating digital business.</p>
           <ul>
-            <li>★ EVERYTHING INCLUDED in the Creator Hub and Asset Factory</li>
-            <li>5 complete, ready-to-sell digital products built end-to-end</li>
+            <li>★ EVERYTHING INCLUDED in Landing Page and Digital Product</li>
+            <li>Complete, ready-to-sell digital product built end-to-end</li>
             <li>Turn-key Gumroad storefront setup and technical checkout integration</li>
             <li>Live, beautiful product showcase sections embedded onto your website</li>
             <li>Professional sales copywriting for your entire storefront</li>
@@ -449,7 +511,7 @@
       <div class="guarantee-section reveal">
         <div class="guarantee-icon">🔒</div>
         <div class="guarantee-title">Risk-Free Framework Guarantee</div>
-        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, you receive an immediate, 100% refund—no questions asked.</p>
+        <p class="guarantee-text">We do not begin development without complete alignment. If we cannot perfectly replicate your brand voice and design vision during our initial design layout consultation, we'll provide a full refund—no questions asked.</p>
       </div>
     </div>
   </section>
@@ -471,8 +533,8 @@
         
         <div class="work-item reveal reveal-delay-1" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; border-color: rgba(255, 107, 53, 0.3);">
           <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
-          <h4 style="color: var(--accent);">Your Project Here</h4>
-          <p style="color: var(--text-muted);">More projects coming soon. Be one of the first 2 clients this month and get featured here.</p>
+          <h4 style="color: var(--accent);">Spot reserved — spec project dropping this week</h4>
+          <p style="color: var(--text-muted);">Be one of the first 3 founding clients and get featured here.</p>
           <button class="btn btn-secondary" style="margin-top: auto;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Work with me</button>
         </div>
       </div>
@@ -512,7 +574,7 @@
       <div class="section-label reveal">About Quill</div>
       <h2 class="section-heading reveal reveal-delay-1">Building digital assets for ambitious creators.</h2>
       <div class="reveal reveal-delay-2">
-        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;">I help creators with 10k-50k subscribers monetize their audience by building premium digital products and the high-converting landing pages to sell them.</p>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem;">I help creators with 10k-100k followers monetize their audience by building premium digital products and the high-converting landing pages to sell them.</p>
       </div>
       
       <h3 class="reveal" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Common Questions</h3>
@@ -536,32 +598,8 @@
     </div>
   </section>
 
-  <!-- Slack Modal -->
-  <div id="slack-modal" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center;">
-    <div style="background:#13141c; border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:3rem 2.5rem; max-width:520px; width:90%; text-align:center; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-      <button onclick="closeSlack()" style="position:absolute; top:1rem; right:1.2rem; background:none; border:none; color:#a0a5b1; font-size:1.5rem; cursor:pointer;">✕</button>
-      <div style="font-size:3rem; margin-bottom:1rem;">💬</div>
-      <h3 style="font-family:'Outfit',sans-serif; font-size:1.6rem; margin:0 0 0.5rem;">Join the Workspace</h3>
-      <p style="color:#a0a5b1; margin-bottom:2rem; font-size:0.95rem;">Click below to join my Slack workspace. You'll get your own dedicated channel where we can talk through your project in real time.</p>
-
-      <div style="background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.25); border-radius:12px; padding:1.5rem; margin-bottom:2rem;">
-        <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:0.75rem; font-weight:600;">How it works</div>
-        <div style="display:flex; flex-direction:column; gap:0.6rem; text-align:left; font-size:0.9rem; color:#d1d5db;">
-          <span>① Click the button below &amp; join the workspace</span>
-          <span>② You land in your own dedicated channel</span>
-          <span>③ I'm already there — let's talk!</span>
-        </div>
-      </div>
-
-      <a id="slack-invite-link" href="https://join.slack.com/t/buildwithquill/shared_invite/zt-416i4fwba-9Np69i~jV~~sm3DZ6kXIPA" target="_blank" class="btn btn-primary" style="width:100%; display:block; text-align:center;">
-        Join Slack Workspace →
-      </a>
-      <p style="color:#a0a5b1; font-size:0.8rem; margin-top:1rem;">Free to join · No account needed · Instant access</p>
-    </div>
-  </div>
-
   <!-- Copy Toast -->
-  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-size:0.9rem; z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+  <div id="copy-toast" style="display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:#1e1e2e; border:1px solid rgba(255,107,53,0.4); color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-size:0.9rem; z-index:1000;">
     ✓ Email copied to clipboard
   </div>
 
@@ -570,30 +608,48 @@
     <div class="container" style="text-align: center; max-width: 680px;">
       <div class="section-label reveal">Get in touch</div>
       <h2 class="section-heading reveal reveal-delay-1">Ready to scale your creator business?</h2>
-      <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>2 new clients</strong> this month. Choose how you'd like to reach out.</p>
+      <p class="reveal reveal-delay-2" style="color: var(--text-muted); margin-bottom: 3rem;">I'm currently accepting <strong>3 founding clients</strong> this month. Apply using the form below.</p>
 
-      <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:stretch;">
+      <div class="reveal form-container">
+        <form id="application-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="niche">Your Niche (Finance, Fitness, Self-Improvement) *</label>
+            <input type="text" id="niche" name="niche" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="followers">Current Follower Count *</label>
+            <input type="text" id="followers" name="followers" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Tell me about your project and goals *</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Apply to Work With Us</button>
+        </form>
+      </div>
 
-        <!-- Slack CTA -->
-        <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,107,53,0.3); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
-          <div style="font-size:2.5rem;">💬</div>
-          <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Chat on Slack</div>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Fastest way to connect. Join my workspace and get your own private channel.</p>
-          <button onclick="openSlack()" class="btn btn-primary" style="width:100%; margin-top:auto;">Contact Us →</button>
-        </div>
-
-        <!-- Divider -->
-        <div style="display:flex; align-items:center; color:var(--text-muted); font-size:0.85rem; padding:0 0.5rem;">or</div>
-
+      <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; align-items:stretch; margin-top: 2rem;">
         <!-- Email CTA -->
         <div style="flex:1; min-width:260px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:2rem 1.5rem; display:flex; flex-direction:column; align-items:center;">
           <div style="font-size:2.5rem;">✉️</div>
           <div style="font-family:'Outfit',sans-serif; font-size:1.1rem; font-weight:700;">Send an Email</div>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Prefer email? Click below to copy our address and reach out at your own pace.</p>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Prefer email? Reach out directly at your own pace.</p>
           <button onclick="copyEmail()" class="btn btn-secondary" style="width:100%; margin-top:auto;">📋 Copy Email Address</button>
           <span style="font-size:0.85rem; color:var(--text-muted);">buildbyquill@gmail.com</span>
         </div>
-
       </div>
     </div>
   </section>
@@ -661,20 +717,28 @@
       });
     }, 100);
 
-    // Slack Modal
-    function openSlack() {
-      const modal = document.getElementById('slack-modal');
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+    // Handle Form Submission
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(document.getElementById('application-form'));
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        niche: formData.get('niche'),
+        followers: formData.get('followers'),
+        message: formData.get('message')
+      };
+
+      // For now, log the data and show a success message
+      console.log('Form submitted:', data);
+      
+      // Show success message
+      alert('Thank you for your application! I\'ll review it and get back to you shortly at ' + data.email);
+      
+      // Reset form
+      document.getElementById('application-form').reset();
     }
-    function closeSlack() {
-      const modal = document.getElementById('slack-modal');
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-    document.getElementById('slack-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeSlack();
-    });
 
     // Copy Email to Clipboard
     function copyEmail() {
@@ -683,6 +747,7 @@
         toast.style.display = 'block';
         setTimeout(() => { toast.style.display = 'none'; }, 3000);
       });
-    }  </script>
+    }
+  </script>
 </body>
 </html>
